@@ -10,17 +10,19 @@ const ADD_ITEM_TO_CART = gql`
   }
 `;
 
-const CollectionItemContainer = (props) => (
-  <Mutation mutation={ADD_ITEM_TO_CART}>
-    {(addItemToCart) => {
-      return (
-        <CollectionItem
-          {...props}
-          addItem={(item) => addItemToCart({ variables: { item } })}
-        />
-      );
-    }}
-  </Mutation>
-);
+const CollectionItemContainer = (props) => {
+  return (
+    <Mutation mutation={ADD_ITEM_TO_CART}>
+      {(addItemToCart) => {
+        return (
+          <CollectionItem
+            {...props}
+            addItem={(item) => addItemToCart({ variables: { item } })}
+          />
+        );
+      }}
+    </Mutation>
+  );
+};
 
 export default CollectionItemContainer;
